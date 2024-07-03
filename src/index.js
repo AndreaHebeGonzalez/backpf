@@ -35,6 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: 'https://frontpatitasfelices-edbmg2rqb-andrea-hebes-projects.vercel.app',  
+  allowedHeaders: ['Content-Type', 'Authorization'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true // Permitir el intercambio de credenciales (cookies, tokens)
 }));
