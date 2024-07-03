@@ -16,7 +16,7 @@ const donacionesRouter = require("../routes/donaciones.routes");
 const upload = require('../middlewares/multerconfig');
 
 //Definicion del puerto para el servidor
-const PUERTO = 3000;
+const PUERTO = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
@@ -34,10 +34,10 @@ app.use(express.urlencoded({ extended: true }));
 //Configuracion de cors para recibir solis desde el dominio http://127.0.0.1:5501
 
 app.use(cors({
-  origin: 'https://frontpatitasfelices-edbmg2rqb-andrea-hebes-projects.vercel.app',  
+  origin: 'frontpatitasfelices.vercel.app',  
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true // Permitir el intercambio de credenciales (cookies, tokens)
+  credentials: false // Permitir el intercambio de credenciales (cookies, tokens)
 }));
 
 app.get("/", (req, res) => {
