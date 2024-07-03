@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 02, 2024 at 08:22 PM
+-- Generation Time: Jul 03, 2024 at 01:20 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -33,14 +33,6 @@ CREATE TABLE `adopciones` (
   `fecha_adopcion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `adopciones`
---
-
-INSERT INTO `adopciones` (`id_perrito`, `id_adoptante`, `fecha_adopcion`) VALUES
-(1, 1, '2024-06-02'),
-(2, 2, '2024-06-02');
-
 -- --------------------------------------------------------
 
 --
@@ -55,14 +47,6 @@ CREATE TABLE `adoptantes` (
   `dni` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `vivienda` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Esta tabla contiene los postulantes/adoptantes que se registran desde la página web';
-
---
--- Dumping data for table `adoptantes`
---
-
-INSERT INTO `adoptantes` (`id`, `nombre_apellido`, `telefono`, `email`, `dni`, `vivienda`) VALUES
-(1, 'Josefina Palmieri', '5485632558', 'josepal@email.com', '33.014.025', 'Casa'),
-(2, 'Andrea G', '5485632558', 'andreag@gmail.com', '37.014.777', 'Casa');
 
 -- --------------------------------------------------------
 
@@ -100,8 +84,7 @@ INSERT INTO `historialdonaciones` (`ID`, `nombre`, `email`, `fechaDonacion`, `mo
 (3, 'Hector Rodriguez', 'hector07@gmail.com', '2024-06-17 00:38:51', 1850),
 (4, 'Daniela Carrizo', 'danicarrizo@gmail.com', '2024-06-20 16:51:23', 700),
 (5, 'Florencia Roca', 'flor001@gmail.com', '2024-06-20 16:52:21', 10700),
-(6, 'Susana Gimenez', 'holasusana@gmail.com', '2024-06-20 16:53:15', 500000),
-(7, 'fulano dono', 'fulano@email.com', '2024-06-25 00:00:00', 5);
+(6, 'Susana Gimenez', 'holasusana@gmail.com', '2024-06-20 16:53:15', 500000);
 
 -- --------------------------------------------------------
 
@@ -120,14 +103,6 @@ CREATE TABLE `perritos` (
   `url_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `fecha_ingreso` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='esta tabla contiene perritos adoptados y no adoptados';
-
---
--- Dumping data for table `perritos`
---
-
-INSERT INTO `perritos` (`id`, `nombre`, `genero`, `edad`, `condicion_medica`, `tamano`, `estado_adopcion`, `url_img`, `fecha_ingreso`) VALUES
-(1, 'cuqui', 'macho', '10 años', 'vacunado, castrado', 'mediano', 'adoptado', '\\img_perritos\\1719914236295.jpg', '2024-06-02'),
-(2, 'uma', 'hembra', '10 años', 'castrada', 'pequeño', 'adoptado', '\\img_perritos\\1719914947878.jpg', '2024-06-02');
 
 --
 -- Indexes for dumped tables
@@ -174,13 +149,13 @@ ALTER TABLE `perritos`
 -- AUTO_INCREMENT for table `adoptantes`
 --
 ALTER TABLE `adoptantes`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `adoptantes_perritos`
 --
 ALTER TABLE `adoptantes_perritos`
-  MODIFY `id_postulacion` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_postulacion` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `historialdonaciones`
@@ -189,10 +164,10 @@ ALTER TABLE `historialdonaciones`
   MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for table `perritos`
 --
 ALTER TABLE `perritos`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
