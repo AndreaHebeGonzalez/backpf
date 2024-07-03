@@ -4,7 +4,7 @@ const express = require("express");
 //Se intancia la aplicación express en app:
 const app = express(); //express() es una función que devuelve un objeto. En este caso, express() devuelve un objeto que representa una aplicación Express.
 
-/* const cors = require('cors'); */
+const cors = require('cors');
 
 //Importo enrutadores creados en la carpeta routes para su montaje
 const perritosRouter = require('../routes/perritos.routes');
@@ -33,12 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Configuracion de cors para recibir solis desde el dominio http://127.0.0.1:5501
 
-/* app.use(cors({
-  origin: 'frontpatitasfelices.vercel.app',  
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: false // Permitir el intercambio de credenciales (cookies, tokens)
-})); */
+app.use(cors()); 
 
 app.get("/", (req, res) => {
   res.send("Realizaste una solicitud GET a la ruta raíz");
