@@ -33,7 +33,12 @@ app.use(express.urlencoded({ extended: true }));
 
 //Configuracion de cors para recibir solis desde el dominio http://127.0.0.1:5501
 
-app.use(cors()); 
+app.use(cors({
+  origin: 'frontpatitasfelices.vercel.app',  
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: false // Permitir el intercambio de credenciales (cookies, tokens)
+}));
 
 app.get("/", (req, res) => {
   res.send("Realizaste una solicitud GET a la ruta raíz");
