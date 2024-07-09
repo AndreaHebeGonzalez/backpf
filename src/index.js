@@ -44,7 +44,7 @@ app.use(cors({
 }));
 
 app.get("/", (req, res) => {
-  res.send("Realizaste una solicitud GET a la ruta raíz");
+  res.send("Realizaste una solicitud GET a la ruta raíz en branch sesiones");
 });
 
 app.post("/", (req, res) => {  
