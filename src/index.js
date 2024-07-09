@@ -1,4 +1,4 @@
-require('dotenv').config();
+/* require('dotenv').config(); */
 
 //Importo express
 const express = require("express");
@@ -40,7 +40,7 @@ app.use(cors({
   origin: 'https://andreahebegonzalez.github.io/frontpf/',  
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: false // Permitir el intercambio de credenciales (cookies, tokens)
+  credentials: true // Permitir el intercambio de credenciales (cookies, tokens)
 }));
 
 app.get("/", (req, res) => {
