@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 //Configuracion de cors para recibir solis desde el dominio http://127.0.0.1:5501
 
 app.use(cors({
-  origin: 'http://127.0.0.1:5501',  
+  origin: 'https://andreahebegonzalez.github.io/frontpf/',  
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: false // Permitir el intercambio de credenciales (cookies, tokens)
@@ -53,7 +53,6 @@ app.post("/", (req, res) => {
 
 /*Montaje de enrutador. Cualquier solicitud que coincida con estas rutas será manejada por este enrutador*/
 app.use('/perritos', upload.single('url_img'), perritosRouter);
-// http://localhost:3000/perritos 
 app.use('/adoptantes', upload.none(), adoptantesRouter);
 app.use('/relaciones', relacionesRouter);
 app.use('/donaciones', upload.none(), donacionesRouter);
