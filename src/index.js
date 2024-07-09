@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 //Importo express
 const express = require("express");
 
@@ -11,6 +13,7 @@ const perritosRouter = require('../routes/perritos.routes');
 const adoptantesRouter = require('../routes/adoptantes.routes');
 const relacionesRouter = require('../routes/relaciones.routes');
 const donacionesRouter = require("../routes/donaciones.routes");
+const authRouter = require("../routes/auth.routes");
 
 //Importo middleware multer para cargar las imagenes en el servidor
 const upload = require('../middlewares/multerconfig');
@@ -34,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 //Configuracion de cors para recibir solis desde el dominio http://127.0.0.1:5501
 
 app.use(cors({
-  origin: 'https://patitasfelices-omega.vercel.app',  
+  origin: 'http://127.0.0.1:5501',  
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: false // Permitir el intercambio de credenciales (cookies, tokens)
@@ -50,9 +53,11 @@ app.post("/", (req, res) => {
 
 /*Montaje de enrutador. Cualquier solicitud que coincida con estas rutas será manejada por este enrutador*/
 app.use('/perritos', upload.single('url_img'), perritosRouter);
+// http://localhost:3000/perritos 
 app.use('/adoptantes', upload.none(), adoptantesRouter);
 app.use('/relaciones', relacionesRouter);
 app.use('/donaciones', upload.none(), donacionesRouter);
+app.use('/auth', authRouter);
 
 
 //agrego escuchador al servidor en el puerto especificado

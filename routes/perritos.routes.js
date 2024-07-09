@@ -1,8 +1,12 @@
 //Se importa la funcion Router desde express para crear instancias de rutas.
 const { Router } = require('express');
 
+
+
 //Creación de la Instancia del Enrutador, el enrutador me permite crear las instancias de rutas
 const perritosRouter = Router();
+
+const authMiddleware = require('../middlewares/authMiddleware');
 
 //Se deben importar los controladores para asociarlos a las rutas correspondientes
 
@@ -21,25 +25,25 @@ const perritosControllers = require('../controllers/perritos.controllers');
 
 //En cada solicitud se pasa la referencia a las funciones controlodaras, la ejecución se realiza automáticamente por Express cuando una solicitud coincide con la ruta definida. 
 
-perritosRouter.get("/", perritosControllers.buscarTodos);
+perritosRouter.get("/", authMiddleware, perritosControllers.buscarTodos);
 
-perritosRouter.get("/libre-en-proceso", perritosControllers.buscarLibreEnProceso);
+perritosRouter.get("/libre-en-proceso", authMiddleware, perritosControllers.buscarLibreEnProceso);
 
-perritosRouter.get("/:id", perritosControllers.buscarPorId);
+perritosRouter.get("/:id", authMiddleware, perritosControllers.buscarPorId);
 
-perritosRouter.get("/filtrarporestado/:estadoAdopcion", perritosControllers.filtrarEstadoAdopcion);
+perritosRouter.get("/filtrarporestado/:estadoAdopcion", authMiddleware, perritosControllers.filtrarEstadoAdopcion);
 
-perritosRouter.get("/filtrarportamano/:tamano", perritosControllers.filtrarPorTamaño);
+perritosRouter.get("/filtrarportamano/:tamano", authMiddleware, perritosControllers.filtrarPorTamaño);
 
 /* perritosRouter.get("/obtenerpostulantes", perritosControllers.obtenerPostulantes); */
 
-perritosRouter.post("/", perritosControllers.agregarPerrito);
+perritosRouter.post("/", authMiddleware, perritosControllers.agregarPerrito);
 
-perritosRouter.put("/:id", perritosControllers.actualizar);
+perritosRouter.put("/:id", authMiddleware, perritosControllers.actualizar);
 
-perritosRouter.put("/cambiarestado/:id", perritosControllers.cambiarEstadoAdopcion);
+perritosRouter.put("/cambiarestado/:id", authMiddleware, perritosControllers.cambiarEstadoAdopcion);
 
-perritosRouter.delete("/:id", perritosControllers.borrarPorId);
+perritosRouter.delete("/:id", authMiddleware, perritosControllers.borrarPorId);
 
 
 module.exports = perritosRouter;
