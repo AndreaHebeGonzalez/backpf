@@ -1,6 +1,6 @@
 //Este archivo contiene el middleware de autenticación que verifica los tokens JWT en las solicitudes.
 
-const jwt = ("jsonwebtoken"); // Importa la biblioteca jsonwebtoken para manejar tokens JWT.
+const jwt = require("jsonwebtoken"); // Importa la biblioteca jsonwebtoken para manejar tokens JWT.
 
 const authMiddleware = (req, res, next) => {
     const authHeader = req.headers["authorization"]; //Obtiene el valor del encabezado Authorization de la solicitud. Este encabezado generalmente contiene el token JWT.
