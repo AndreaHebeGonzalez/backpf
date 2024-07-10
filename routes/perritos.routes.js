@@ -27,7 +27,7 @@ const perritosControllers = require('../controllers/perritos.controllers');
 
 perritosRouter.get("/", authMiddleware, perritosControllers.buscarTodos);
 
-perritosRouter.get("/libre-en-proceso", authMiddleware, perritosControllers.buscarLibreEnProceso);
+perritosRouter.get("/libre-en-proceso", perritosControllers.buscarLibreEnProceso);
 
 perritosRouter.get("/:id", authMiddleware, perritosControllers.buscarPorId);
 
@@ -41,7 +41,7 @@ perritosRouter.post("/", authMiddleware, perritosControllers.agregarPerrito);
 
 perritosRouter.put("/:id", authMiddleware, perritosControllers.actualizar);
 
-perritosRouter.put("/cambiarestado/:id", authMiddleware, perritosControllers.cambiarEstadoAdopcion);
+perritosRouter.put("/cambiarestado/:id", perritosControllers.cambiarEstadoAdopcion);
 
 perritosRouter.delete("/:id", authMiddleware, perritosControllers.borrarPorId);
 
