@@ -1,7 +1,5 @@
 //Este archivo contiene el middleware de autenticación que verifica los tokens JWT en las solicitudes.
 
-const { decode } = require("jsonwebtoken"); // Importa la función decode de jsonwebtoken, aunque en este caso no se utiliza. Podrías eliminar esta línea para mantener el código limpio
-
 const jwt = ("jsonwebtoken"); // Importa la biblioteca jsonwebtoken para manejar tokens JWT.
 
 const authMiddleware = (req, res, next) => {
@@ -15,7 +13,8 @@ const authMiddleware = (req, res, next) => {
 
     //Extracción del Token:
     const token = authHeader.split(" ")[1]; //token: Divide el encabezado Authorization en partes usando el espacio como separador y toma la segunda parte (el token real). Esto asume que el formato del encabezado es Bearer <token>.
-    console.log(token)
+    console.log('token', token)
+    console.log('secreto', process.env.SECRET_KEY);
     //Verificación de la Presencia del Token
     if(!token) {
         return res.status(403).send({ auth: false, error: 'token malformado' }); // Si el token no está presente, devuelve un error 403 indicando que el token está malformado
