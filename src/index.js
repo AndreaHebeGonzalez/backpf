@@ -1,4 +1,4 @@
-/* require('dotenv').config(); */
+require('dotenv').config();
 
 //Importo express
 const express = require("express");
@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 //Configuracion de cors para recibir solis desde el dominio http://127.0.0.1:5501
 
 app.use(cors({
-  origin: 'https://andreahebegonzalez.github.io/frontpf/',  
+  origin: 'https://patitasfelices-omega.vercel.app/',  
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true // Permitir el intercambio de credenciales (cookies, tokens)
