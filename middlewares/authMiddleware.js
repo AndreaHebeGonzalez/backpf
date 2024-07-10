@@ -25,6 +25,8 @@ const authMiddleware = (req, res, next) => {
         if(error) { // Comprueba si hubo un error durante la verificación
             return res.status(401).send({ auth:false, error: 'Fallo la autenticacion del token' }) //Si hubo un error, devuelve un error 500 indicando que la autenticación del token falló.
         };
+        console.log(process.env.SECRET_KEY);
+        console.log(token);
         req.userId = decoded.id; // Si el token es válido, extrae el ID del usuario del token decodificado y lo asigna a req.userId
 
         /* La línea req.userId = decoded.id; se utiliza para almacenar el ID del usuario extraído del token JWT en el objeto de solicitud (req). Esto permite que el ID del usuario esté disponible para su uso en las rutas y controladores que vienen después del middleware de autenticación. De esta manera, no necesitas verificar el token nuevamente en cada ruta; puedes simplemente acceder al ID del usuario desde el objeto de solicitud.*/
